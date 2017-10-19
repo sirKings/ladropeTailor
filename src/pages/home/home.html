@@ -3,16 +3,25 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title>News</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h3>Ionic Menu Starter</h3>
-
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
-
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+  <h3>News</h3>
+  <ion-list>
+     <div *ngFor='let post of postList' (tap)='more(post)'>
+      <ion-card>
+        <img src="{{post.image}}"/>
+        <ion-card-content>
+          <ion-card-title>
+            {{post.title}}
+            </ion-card-title>
+          <p>{{post.description}}
+          </p>
+          <p float-right (tap)='more(post)'>more..</p>
+        </ion-card-content>
+      </ion-card>
+     </div>
+  </ion-list>
 </ion-content>

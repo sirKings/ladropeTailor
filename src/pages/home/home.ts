@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+
+import { AngularFireDatabase } from 'angularfire2/database';
+
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 @Component({
   selector: 'page-home',
@@ -7,8 +10,17 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  postList
 
+  constructor( private db: AngularFireDatabase, private iab: InAppBrowser) {
+    this.db.list('blogTailors').subscribe((res)=>{
+    	this.postList = res;
+    })
+  }
+
+
+  more(post){
+    this.iab.create(post.link, '_blank');
   }
 
 }

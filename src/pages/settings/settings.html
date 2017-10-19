@@ -1,0 +1,53 @@
+<!--
+  Generated template for the SettingsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Settings</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+	<ion-card *ngIf="userDetails">
+  <img class='userimage' src="{{ userDetails?.logo || 'assets/images/company_dummy.png'}}"/>
+    <button ion-button clear item-right (click)="editUser()">
+      Edit
+    </button>
+
+  <ion-card-content>
+    <ion-card-title >
+      {{userDetails?.displayName}}
+    </ion-card-title>
+    
+    <ion-list>
+      <button ion-item>
+        <ion-icon name="mail" item-left></ion-icon>
+        {{userDetails?.email}}
+       </button>
+       <button ion-item>
+        <ion-icon name="call" item-left></ion-icon>
+        {{userDetails?.phone}}
+       </button>
+       <button ion-item>
+        <ion-icon name="home" item-left></ion-icon>
+        {{userDetails?.address}}
+       </button>
+       <button ion-item>
+        <ion-icon name="briefcase" item-left></ion-icon>
+        {{userDetails?.name}}
+       </button>
+    </ion-list>
+  </ion-card-content>
+</ion-card>
+
+<button ion-button clear (click)="signOut()">
+    Logout
+</button>
+</ion-content>

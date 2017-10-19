@@ -1,0 +1,54 @@
+page-my-designs {
+	.design{
+		margin: 20px 20px;
+	}
+
+	.list {
+		margin-top: 20px;
+	}
+
+	.content {
+		float: right;
+		width: 60%
+	}
+	h4 {
+		margin-bottom: 0.2rem;
+	}
+	.content p {
+		line-height: 15px
+	}
+
+	p{
+		margin: 0px
+	}
+
+	.card {
+		width: 100%;
+	}
+
+	.pointer{
+		cursor: pointer;
+		color: rgb(0,74,0);
+	}
+
+	@media only screen and (max-width: 800px) {
+	    /* For mobile phones: */
+	    .content{
+	    	margin-bottom: 5px;
+	    	width: 100%
+	    }
+
+	    .card {
+	    	width: 100%;
+	    }
+
+	}
+
+	@media only screen and (max-width: 800px) {
+	    img {
+	            max-width: 90%
+	        }
+
+	}
+
+}

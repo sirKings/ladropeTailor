@@ -1,0 +1,87 @@
+<!--
+  Generated template for the EditUserPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>edit-user</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+	<ion-card>
+  <form [formGroup]="userForm" (submit)="saveUser()" novalidate>
+  <img class='userimage' src='{{user.logo || "assets/images/company_dummy.png"}}'/>
+    <button ion-button clear item-right type="submit">
+      Save
+    </button>
+    <button ion-button clear item-right type="button" (click)="cancel()">
+      Cancel
+    </button>
+  <ion-card-content>
+    <ion-card-title>
+      {{user.displayName}}
+    </ion-card-title>
+    
+    <ion-list>
+      <ion-item>
+        <ion-icon name="mail" item-left></ion-icon>
+        {{user.email}}
+      </ion-item>
+      <ion-item>
+        <ion-icon name="call" item-left></ion-icon>
+        <ion-input formControlName='phone'  placeholder="Enter mobile number"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="home" item-left></ion-icon>
+          <ion-textarea formControlName='address' placeholder="Enter delivery address"></ion-textarea>
+      </ion-item>
+       <ion-item>
+        <ion-icon name="briefcase" item-left></ion-icon>
+          <ion-textarea formControlName='name' placeholder="Enter your business name"></ion-textarea>
+       </ion-item>
+       <ion-item>
+        <ion-icon name="briefcase" item-left></ion-icon>
+          <ion-textarea formControlName='account' placeholder="Enter your account Number"></ion-textarea>
+       </ion-item>
+       <ion-item>
+        <ion-icon name="briefcase" item-left></ion-icon>
+          <ion-textarea formControlName='accountName' placeholder="Enter your account name"></ion-textarea>
+       </ion-item>
+       <ion-item>
+        <ion-icon name="briefcase" item-left></ion-icon>
+          <ion-select formControlName="bank" placeholder="choose bank">
+            <ion-option value="access">Access Bank</ion-option>
+            <ion-option value="citibank">Citibank</ion-option>
+            <ion-option value="diamond">Diamond Bank</ion-option>
+            <ion-option value="ecobank">Ecobank</ion-option>
+            <ion-option value="fidelity">Fidelity Bank</ion-option>
+            <ion-option value="fcmb">First City Monument Bank (FCMB)</ion-option>
+            <ion-option value="fbn">First Bank</ion-option>
+            <ion-option value="fsdh">FSDH Merchant Bank</ion-option>
+            <ion-option value="gtb">Guarantee Trust Bank (GTB)</ion-option>
+            <ion-option value="heritage">Heritage Bank</ion-option>
+            <ion-option value="Keystone">Keystone Bank</ion-option>
+            <ion-option value="rand">Rand Merchant Bank</ion-option>
+            <ion-option value="skye">Skye Bank</ion-option>
+            <ion-option value="stanbic">Stanbic IBTC Bank</ion-option>
+            <ion-option value="standard">Standard Chartered Bank</ion-option>
+            <ion-option value="sterling">Sterling Bank</ion-option>
+            <ion-option value="suntrust">Suntrust Bank</ion-option>
+            <ion-option value="union">Union Bank</ion-option>
+            <ion-option value="uba">United Bank for Africa (UBA)</ion-option>
+            <ion-option value="unity">Unity Bank</ion-option>
+            <ion-option value="wema">Wema Bank</ion-option>
+            <ion-option value="zenith">Zenith Bank</ion-option>
+	       </ion-select>
+       </ion-item>
+    </ion-list>
+  </ion-card-content>
+  </form>
+</ion-card>
+</ion-content>

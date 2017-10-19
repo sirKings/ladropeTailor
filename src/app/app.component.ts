@@ -3,8 +3,17 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { AngularFireAuth } from 'angularfire2/auth';
+
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import { CompletedOrderPage } from '../pages/completed-order/completed-order';
+import { CanceledOrderPage } from '../pages/canceled-order/canceled-order';
+import { SettingsPage } from '../pages/settings/settings';
+import { MyDesignsPage } from '../pages/my-designs/my-designs';
+import { PendingOrderPage } from '../pages/pending-order/pending-order';
+
+import { LandingPage } from '../pages/landing/landing';
 
 @Component({
   templateUrl: 'app.html'
@@ -12,17 +21,32 @@ import { ListPage } from '../pages/list/list';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, private afAuth: AngularFireAuth, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
 
+    const authObserver = afAuth.authState.subscribe( user => {
+      if (user) {
+        this.rootPage = HomePage;
+
+        authObserver.unsubscribe();
+      } else {
+        this.rootPage = LandingPage;
+        authObserver.unsubscribe();
+      }
+      });
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage }
+      { title: 'News', component: HomePage },
+      { title: 'My designs', component: MyDesignsPage},
+      { title: 'Post Design', component: ListPage },
+      { title: 'Completed Orders', component: CompletedOrderPage},
+      //{ title: 'Canceled Orders', component: CanceledOrderPage},
+      { title: 'Pending Orders', component: PendingOrderPage},
+      { title: 'Settings', component: SettingsPage}
     ];
 
   }

@@ -1,0 +1,54 @@
+<!--
+  Generated template for the PendingOrderPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Pending Orders</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+	<div class='design'>
+	  <div *ngIf = '!cloths'> <p>You dont have any orders yet</p></div>
+	  <div *ngIf = 'isCloth'>
+	      <div>
+	        <h3>Orders for you</h3>
+	        <p>
+	        	Endeavour to complete your orders and on schedule
+	        </p>
+	      </div>
+
+	      <div>
+	        <div class='list' *ngFor= ' let cloth of cloths'>
+	          <div class="card" >
+	          <div class='content'>
+	              <a class='pointer' (click)='select(cloth)'>
+	                <h4 >{{cloth.name}}</h4>
+	                <p >Number sold: {{cloth?.numSold}}</p>
+	                <p >Price: NGN{{cloth.cost}}.00</p>
+	                <p>Date: {{cloth.tailorDate | date: 'dd/MM/yyyy'}}</p>
+	              </a>
+	            </div>
+	            <div class='thumbnail pointer' (click)='select(cloth)'>
+	              <img src="{{cloth.image1}}">
+	            </div>
+	            <div class='action'>
+	              <button (click)='select(cloth)' ion-button>View</button>
+	              <button  *ngIf = 'cloth.accepted' (click)='decline(cloth)' ion-button color="danger">Decline</button>
+	              <button  *ngIf = '!cloth.accepted' (click)='accept(cloth)' ion-button >Accept</button>
+	            </div>
+	          </div>
+	          <hr>
+	        </div>
+	      </div>
+	  </div>
+		
+	</div>
+</ion-content>

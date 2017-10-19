@@ -1,0 +1,69 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Welcome back</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="loginForm" (submit)="loginUser()" novalidate>
+
+    <ion-item>
+      <ion-label stacked>Email</ion-label>
+      <ion-input #email formControlName="email" type="email" placeholder="Your email address"
+        [class.invalid]="!loginForm.controls.email.valid &&
+          loginForm.controls.email.dirty"></ion-input>
+    </ion-item>
+    <ion-item class="error-message" *ngIf="!loginForm.controls.email.valid  &&
+      loginForm.controls.email.dirty">
+      <p>Please enter a valid email.</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Password</ion-label>
+      <ion-input #password formControlName="password" type="password" placeholder="Your password"
+        [class.invalid]="!loginForm.controls.password.valid &&
+          loginForm.controls.password.dirty"></ion-input>
+    </ion-item>
+    <ion-item class="error-message" *ngIf="!loginForm.controls.password.valid  &&
+      loginForm.controls.password.dirty">
+      <p>Your password needs more than 6 characters.</p>
+    </ion-item>
+
+    <button ion-button block type="submit">
+      Login
+    </button>
+
+  </form>
+
+  <!--<ion-grid>
+    <ion-row>
+       <ion-col col-4>
+          <button ion-button (click)="signInWithFacebook()" class='loginbutton'>
+            <ion-icon name="logo-facebook"></ion-icon>
+          </button>
+        </ion-col>
+       <ion-col col-4>
+          <button ion-button (click)="signInWithTwitter()" class='loginbutton'>
+            <ion-icon name="logo-twitter"></ion-icon>
+          </button>
+        </ion-col>
+       <ion-col col-4>
+          <button ion-button (click)="signInWithGoogle()" class='loginbutton'>
+            <ion-icon name="logo-googleplus"></ion-icon>
+          </button>
+        </ion-col>
+     </ion-row>
+  </ion-grid>-->
+
+  <button ion-button block clear (click)="goToResetPassword()">
+    I forgot my password 🙁
+  </button>
+
+  <button ion-button block clear (click)="createAccount()">
+    Create a new account
+  </button>
+  
+
+</ion-content>

@@ -3,21 +3,76 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>List</ion-title>
+    <ion-title>Post a design</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
-      <ion-icon [name]="item.icon" item-start></ion-icon>
-      {{item.title}}
-      <div class="item-note" item-end>
-        {{item.note}}
-      </div>
-    </button>
-  </ion-list>
-  <div *ngIf="selectedItem" padding>
-    You navigated here from <b>{{selectedItem.title}}</b>
+  <div padding>
+    <p>For best presentation on the app, please upload images with the same dimensions.</p>
+    <p>Please note that this page is for posting only one design. The four images are expected to be the front view, back view, and other views of same design that you might want clients to see.</p>
   </div>
+  
+  <div padding>
+    <ion-slides pager>
+        <ion-slide *ngIf='post[0]'>
+           <img class='slide-image' [src]='post[0]'/>
+         </ion-slide>
+         <ion-slide *ngIf='post[1]'>
+            <img class='slide-image' [src]='post[1]'/>
+         </ion-slide>
+         <ion-slide *ngIf='post[2]'>
+            <img class='slide-image' [src]='post[2]'/>
+          </ion-slide>
+           <ion-slide *ngIf='post[3]'>
+            <img class='slide-image' [src]='post[3]'/>
+          </ion-slide>
+    </ion-slides>
+
+    <button (click)='addImage()' ion-button>Add Image</button>
+  </div>
+  <form [formGroup]="postDesign" (submit)="submit()" novalidate>
+    <ion-item>
+      <ion-label floating>Name of Design</ion-label>
+      <ion-input formControlName="name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Price</ion-label>
+      <ion-input formControlName="price" type="number"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>What fabric is it made from</ion-label>
+      <ion-input formControlName="fabricType"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Class</ion-label>
+      <ion-select formControlName="tags">
+            <ion-option value="casuals">Casual Wears</ion-option>
+             <ion-option value="corporate">Corporate Wears</ion-option>
+             <ion-option value="native">Traditional Wears</ion-option>
+             <ion-option value="shirt">Shirts</ion-option>
+             <ion-option value="trousers">Trousers</ion-option>
+             <ion-option value="gown">Gown</ion-option>
+             <ion-option value="wedding">Wedding Outfits</ion-option>
+             <ion-option value="ankara">Ankara</ion-option>
+             <ion-option value="suit">Suits</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Production time (days)</ion-label>
+      <ion-input formControlName="time" type="number"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Gender</ion-label>
+      <ion-select formControlName="gender">
+            <ion-option value="male">Male</ion-option>
+            <ion-option value="female">Female</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Description</ion-label>
+      <ion-textarea formControlName="description"></ion-textarea>
+    </ion-item>
+    <button type='submit' ion-button block>Submit</button>
+  </form>
 </ion-content>

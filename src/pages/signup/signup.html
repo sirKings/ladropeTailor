@@ -1,0 +1,74 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Welcome</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="signupForm" (submit)="signupUser()" novalidate>
+
+    <ion-item>
+      <ion-label stacked>Email</ion-label>
+      <ion-input formControlName="email" type="email" placeholder="Your email address"
+        [class.invalid]="!signupForm.controls.email.valid && signupForm.controls.email.dirty"></ion-input>
+    </ion-item>
+    <ion-item class="error-message" *ngIf="!signupForm.controls.email.valid  && signupForm.controls.email.dirty">
+      <p>Please enter a valid email.</p>
+    </ion-item>
+
+     <ion-item>
+      <ion-label stacked>Full Name</ion-label>
+      <ion-input formControlName="name" type="text"  placeholder="Your name"
+        [class.invalid]= "signupForm.controls.name.dirty"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Password</ion-label>
+      <ion-input formControlName="password" type="password"  placeholder="Your password"
+        [class.invalid]="!signupForm.controls.password.valid && signupForm.controls.password.dirty"></ion-input>
+    </ion-item>
+    <ion-item class="error-message" *ngIf="!signupForm.controls.password.valid  && signupForm.controls.password.dirty">
+      <p>Your password needs more than 6 characters.</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Retype Password</ion-label>
+      <ion-input formControlName="passwordRetyped" type="password"  placeholder="Retype password"
+        [class.invalid]="!signupForm.controls.password.valid && signupForm.controls.password.dirty"></ion-input>
+    </ion-item>
+
+    <p><ion-checkbox type="checkbox" value='false' formControlName= "agree"></ion-checkbox><a (click)="seeTerms()"> I agree to Terms And Conditions</a></p>
+
+    <button ion-button block type="submit">
+      Create an Account
+    </button>
+  </form>
+
+  <!--<ion-grid>
+    <ion-row>
+       <ion-col col-4>
+          <button ion-button (click)="signInWithFacebook()" class='loginbutton'>
+            <ion-icon name="logo-facebook"></ion-icon>
+          </button>
+        </ion-col>
+       <ion-col col-4>
+          <button ion-button (click)="signInWithTwitter()" class='loginbutton'>
+            <ion-icon name="logo-twitter"></ion-icon>
+          </button>
+        </ion-col>
+       <ion-col col-4>
+          <button ion-button (click)="signInWithGoogle()" class='loginbutton'>
+            <ion-icon name="logo-googleplus"></ion-icon>
+          </button>
+        </ion-col>
+     </ion-row>
+  </ion-grid>-->
+    
+  <h6 ion-text>Have an account?</h6>
+  <button ion-button block (click)="login()">
+     Login
+  </button>
+
+</ion-content>
